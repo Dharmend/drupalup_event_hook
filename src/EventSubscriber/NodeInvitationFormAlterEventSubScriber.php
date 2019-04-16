@@ -20,19 +20,18 @@ class NodeInvitationFormAlterEventSubScriber implements EventSubscriberInterface
   }
 
   /**
-   * Altering the invitation node form.
+   * Altering form array from here.
    */
   public function hookFormAlter($event) {
 
-    $form = $event->getForm();
-    if ($event->getFormId() == 'node_page_edit_form') {
+    if ($event->getFormId() == 'node_article_edit_form') {
+      $form = $event->getForm();
       $form['info'] = [
         '#type' => 'markup',
-        '#markup' => '<div class="info">Example markup.</div>',
+        '#markup' => '<div class="info">Ed had edited it.</div>',
       ];
+      $event->setForm($form);
     }
-
-    $event->setForm($form);
   }
 
 }
